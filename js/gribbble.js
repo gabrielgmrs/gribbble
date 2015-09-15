@@ -1,11 +1,11 @@
 var page = 1;
 var per_page = 18;
-var shots_array = [];
 
 // lista os shots na página inicial
 function getShots(per_page, page) {
 	$.ajax({
 		url: "http://api.dribbble.com/shots/popular/?page="+page+"&per_page="+per_page,
+		type: 'GET',
 		dataType: 'jsonp',
 	})
 	.done(function(results) {
@@ -25,18 +25,18 @@ function getShot(id) {
 		dataType: 'jsonp',
 	})
 	.done(function(result) {
-		$('.detalhe').fadeIn();
 		$('.detalhe').append('<h2>'+ result.title + '</h2>')
 		$('.detalhe').append('<figure><img src="'+ result.player.avatar_url + '" title="'+ result.player.name +'"></h2>')
 		$('.detalhe').append('<span class="author">por <a href="'+ result.player.url +'" target="_blank">'+ result.player.name + '</a></span>')
 		$('.detalhe').append(result.description)
 		$('.detalhe').append('<img class="feat" src="'+ result.image_url +'">')
+		$('.detalhe').fadeIn();
 	})
 	.fail(function() {
 		$('.detalhe').append('<p>Lamentamos, mas não pudemos conectar aos servidores do Dribbble. Tente novamente daqui a pouco!</p>')
 	})
 }
-// checa a largura do device para definir quantidade de shots na tela.
+// checa a largura do device para definir quantidade de shots na tela
 function howManyShots() {
 	var winWidth = $(window).width();
 	var shotWidth = 310;
@@ -62,8 +62,7 @@ $(document).ready(function(){
 	if ($('html').hasClass('home')) {
 		getShots(per_page, page);
 	} else {
-		var	shotID = getParameterByName('id');
-		getShot(shotID);
+		getShot(getParameterByName('id'));
 	}
 });
 
