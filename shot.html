@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="interna">
+<html class="interna" ng-app="gribbble">
 	<head>
 		<title>gribbble - o melhor do Dribbble aparece aqui </title>
 		<meta charset="utf-8">
@@ -7,7 +7,9 @@
 		<meta name="author" content="Gabriel Guimarães">
 		<meta name="keywords" content="Dribbble, design, illustration, ilustração, portfolio, photoshop, illustrator, corel draw">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-		<script type="text/javascript" src="js/libs/jquery.js"></script>
+		<script type="text/javascript" src="js/libs/jquery.min.js"></script>
+		<script type="text/javascript" src="js/libs/angular.min.js"></script>
+		<script type="text/javascript" src="js/libs/angular-sanitize.min.js"></script>
 		<link rel="stylesheet" href="css/main.css">
 		<link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
 		<link href='https://fonts.googleapis.com/css?family=Lato:400,300' rel='stylesheet' type='text/css'>
@@ -37,9 +39,20 @@
 				<p class="sub">o melhor do Dribbble aparece aqui.</p>
 			</div>
 		</header>
-		<main>
-			<article class="detalhe container"></article>
+		<main ng-controller="ShotController as shot">
+			<article class="detalhe container">
+				<h2>{{shot.info.title}}</h2>
+				<figure>
+					<a href="{{shot.info.player.url}}" target="_blank">
+						<img ng-src="{{shot.info.player.avatar_url}}" alt="{{shot.info.player.name}}">
+					</a>
+				</figure>
+				<span class="author">por <a href="{{shot.info.player.url}}" target="_blank">{{shot.info.player.name}}</a>
+				</span>
+				<p ng-bind-html="shot.info.description"></p>
+				<img ng-src="{{shot.info.image_url}}" alt="{{shot.info.title}}" class="feat">
+			</article>
 		</main>
-		<script type="text/javascript" src="js/gribbble.min.js"></script>
+		<script type="text/javascript" src="js/gribbble.js"></script>
 	</body>
 </html>

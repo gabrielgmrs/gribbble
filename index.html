@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="home">
+<html class="home" ng-app="gribbble">
 	<head>
 		<title>gribbble - o melhor do Dribbble aparece aqui </title>
 		<meta charset="utf-8">
@@ -7,7 +7,9 @@
 		<meta name="author" content="Gabriel Guimarães">
 		<meta name="keywords" content="Dribbble, design, illustration, ilustração, portfolio, photoshop, illustrator, corel draw">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-		<script type="text/javascript" src="js/libs/jquery.js"></script>
+		<script type="text/javascript" src="js/libs/jquery.min.js"></script>
+		<script type="text/javascript" src="js/libs/angular.min.js"></script>
+		<script type="text/javascript" src="js/libs/angular-sanitize.min.js"></script>
 		<link rel="stylesheet" href="css/main.css">
 		<link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
 		<link href='https://fonts.googleapis.com/css?family=Lato:400,300' rel='stylesheet' type='text/css'>
@@ -37,12 +39,16 @@
 				<p class="sub">o melhor do Dribbble aparece aqui.</p>
 			</div>
 		</header>
-		<main>
-			<ul class="shots"></ul>
+		<main ng-controller="ShotsController as shots">
+			<ul class="shots">
+				<li class="shot" ng-repeat="shots in shots.list">
+					<a href="shot.html?id={{shots.id}}">
+						<img ng-src="{{shots.image_url}}" alt="{{shots.title}}">
+						<h3>{{shots.title}}</h3>
+					</a>
+				</li>
+			</ul>
 		</main>
-		<footer>
-			<button class="show_more">Mais shots</button>
-		</footer>
-		<script type="text/javascript" src="js/gribbble.min.js"></script>
+		<script type="text/javascript" src="js/gribbble.js"></script>
 	</body>
 </html>
