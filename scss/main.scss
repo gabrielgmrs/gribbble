@@ -22,6 +22,7 @@ p a {
 }
 body {
 	font-family: Lato;
+	min-height: 1020px;
 }
 .container {
 	width: 80%;
@@ -35,10 +36,6 @@ header {
 }
 .interna main {
 	opacity: 0;
-}
-main {
-	height: 100%;
-	overflow: hidden;
 }
 h1 {
 	font-size: 48px;
@@ -81,11 +78,7 @@ p.sub {
 	opacity: 0.6;
 }
 article.detalhe {
-	position: absolute;
-	top: 130px;
 	margin: 0 auto;
-	left: 0;
-	right: 0;
 	border-top: solid 1px #f0f0f0;
 
 	h2 {
@@ -112,7 +105,7 @@ article.detalhe {
 		opacity: 0.6;
 	}
 	p {
-		margin: 0 0 5px;
+		margin: 0 0 10px;
 	}
 	img.feat {
 		max-width: 100%;
@@ -171,7 +164,7 @@ li.shot {
 			margin-top: 10px;
 		}
 		p {
-			white-space: pre-line;
+			word-wrap: break-word;
 		}
 	}
 	.container {
