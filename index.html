@@ -38,10 +38,10 @@
 		</header>
 		<main ng-controller="ShotsController as shots">
 			<ul class="shots">
-				<li class="shot" ng-repeat="shots in shots.list">
+				<li ng-repeat="shots in shots.list" class="shot">
 					<a href="shot.html?id={{shots.id}}">
-						<img ng-src="{{shots.image_url}}" alt="{{shots.title}}">
-						<h3>{{shots.title}}</h3>
+						<img ng-src="{{shots.image_url}}">
+						<h3 ng-bind="shots.title"></h3>
 					</a>
 				</li>
 			</ul>

@@ -22,7 +22,6 @@ p a {
 }
 body {
 	font-family: Lato;
-	min-height: 1020px;
 }
 .container {
 	width: 80%;
@@ -174,6 +173,9 @@ li.shot {
 
 // Apenas desktop
 @media screen and (min-width:800px) {
+	body {
+		min-height: 1020px;
+	}
 	li.shot {
 		height: 255px;
 		border: solid 1px #f5f5f5;
